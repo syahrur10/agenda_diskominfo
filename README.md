@@ -29,3 +29,11 @@ Buka http://localhost:3000. Untuk mengaktifkan AI surat, salin `.env.example` me
   sambungkan `load()` / `save()` di `app.js` ke database (Vercel KV, Supabase, dsb.).
 - Batas ukuran file surat 4 MB (batas request Vercel).
 - Nama disposisi dapat diubah di `PEOPLE` pada `app.js` dan `api/extract.js`.
+
+## Struktur
+```
+public/   -> halaman (index.html, app.js, style.css, assets/)
+api/      -> fungsi serverless Vercel (extract.js)
+scripts/  -> server lokal (npm run dev)
+```
+Di Vercel, *Framework Preset* harus **Other**, tanpa Build Command, Output Directory dikosongkan (sudah diatur di vercel.json).
