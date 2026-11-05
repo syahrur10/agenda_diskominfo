@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agenda · Diskominfo Kota Semarang</title>
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side" id="side">
+    <div class="aurora"></div>
+    <div class="brand">
+      <img src="assets/logo.png" alt="Logo Diskominfo Kota Semarang">
+      <div><strong>Agenda</strong><span>Diskominfo Kota Semarang</span></div>
+    </div>
+    <nav class="nav" id="nav"></nav>
+    <div class="nav-title">Jenis kegiatan</div>
+    <nav class="nav" id="cats"></nav>
+    <div class="side-foot">
+      <button class="btn ai wide" id="btnAI">Baca surat dengan AI</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="top">
+      <button class="icon-btn menu" id="btnMenu" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <div class="ttl"><h1 id="pageTitle">Semua agenda</h1><p>Kelola dan pantau agenda kegiatan, lengkap dengan disposisi.</p></div>
+      <button class="btn primary" id="btnAdd">+ Tambah agenda</button>
+    </header>
+
+    <section class="hero" id="hero"></section>
+
+    <section class="stats" id="stats"></section>
+
+    <section class="bar">
+      <input class="search" id="q" type="search" placeholder="Cari kegiatan, lokasi, penyelenggara, nama disposisi…">
+      <select id="fSort"><option value="new">Terbaru</option><option value="old">Terlama</option><option value="soon">Terdekat</option></select>
+      <div class="seg"><button data-v="grid" class="on">Kartu</button><button data-v="list">Daftar</button></div>
+      <button class="btn" id="btnExport">Ekspor CSV</button>
+    </section>
+
+    <div class="count" id="count"></div>
+    <section id="list"></section>
+  </main>
+</div>
+
+<!-- Detail -->
+<dialog id="dlgDetail"></dialog>
+
+<!-- Form -->
+<dialog id="dlgForm">
+  <form id="form" method="dialog">
+    <header class="dh"><h2 id="formTitle">Tambah agenda</h2><button type="button" class="icon-btn" data-close><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>
+    <div class="db">
+      <div class="ai-note" id="aiNote" hidden></div>
+      <div class="grid2">
+        <label class="f full">Nama kegiatan<input name="judul" required></label>
+        <label class="f">Jenis<select name="jenis"></select></label>
+        <label class="f">Nomor surat<input name="nomorSurat"></label>
+        <label class="f">Tanggal mulai<input type="date" name="tglMulai" required></label>
+        <label class="f">Tanggal selesai<input type="date" name="tglSelesai"></label>
+        <label class="f">Jam mulai<input type="time" name="jamMulai"></label>
+        <label class="f">Jam selesai<input type="time" name="jamSelesai"></label>
+        <label class="f">Tempat<input name="tempat" placeholder="Nama lokasi atau Google Meet / Zoom"></label>
+        <label class="f">Penyelenggara<input name="penyelenggara"></label>
+        <label class="f full">Tautan rapat daring<input name="link" placeholder="https://meet.google.com/…"></label>
+        <label class="f full">Keterangan<textarea name="keterangan" rows="3"></textarea></label>
+      </div>
+      <div class="f full"><span>Disposisi</span><div class="chips pick" id="pickDisp"></div></div>
+    </div>
+    <footer class="df"><button type="button" class="btn" data-close>Batal</button><button class="btn primary" value="ok">Simpan agenda</button></footer>
+  </form>
+</dialog>
+
+<!-- AI -->
+<dialog id="dlgAI">
+  <header class="dh"><h2>Baca surat dengan AI</h2><button type="button" class="icon-btn" data-close><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>
+  <div class="db">
+    <label class="drop" id="drop">
+      <input type="file" id="file" accept="application/pdf,image/png,image/jpeg,image/webp" hidden>
+      <div class="drop-i"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg></div>
+      <strong>Unggah surat undangan</strong>
+      <span>PDF, JPG, atau PNG · maksimal 4 MB. Tarik file ke sini atau klik untuk memilih.</span>
+    </label>
+    <div class="ai-status" id="aiStatus" hidden></div>
+    <p class="hint">AI akan mengisi nama kegiatan, waktu, tempat, tautan rapat, dan menyarankan disposisi. Anda tetap bisa memeriksa dan mengubahnya sebelum disimpan.</p>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

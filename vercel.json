@@ -1,1 +1,4 @@
-{ "functions": { "api/extract.js": { "maxDuration": 60 } } }
+{
+  "outputDirectory": "public",
+  "functions": { "api/extract.js": { "maxDuration": 60 } }
+}
